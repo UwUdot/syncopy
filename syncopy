@@ -7,7 +7,7 @@ local_rev=$(cat .syncopy 2>/dev/null || echo 0)
 if [ "$remote_rev" -gt "$local_rev" ]; then
     git reset --hard "@{u}"
 else
-    echo $((local_rev + 1)) > .syncopy
+    echo $((remote_rev + 1)) > .syncopy
     git add -A
     git commit -qm "$(cat .syncopy)"
     git push -q
